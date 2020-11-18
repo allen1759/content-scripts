@@ -11,16 +11,17 @@
 (function() {
     'use strict';
 
-    let maskYoutuber = ['小玉', '放火 Louis', '人生肥宅x尊', '主頻道【谷阿莫】', '谷阿莫Life', 'Joeman', '黃阿瑪的後宮生活', '科幻FANS']
-                        + ['民視戲劇館 Formosa TV Dramas', '新聞面對面', 'WeTV 台灣'];
+    let maskYoutuber = ['小玉', '放火 Louis', '人生肥宅x尊', '主頻道【谷阿莫】', '谷阿莫Life', 'Joeman', '黃阿瑪的後宮生活', '科幻FANS'].concat(
+                       ['民視戲劇館 Formosa TV Dramas', '新聞面對面', 'WeTV 台灣']);
 
     let videos = document.getElementById('grid-container').childNodes;
 
     videos.forEach(function(value, index) {
-        let elements = Array.from(value.getElementsByClassName('style-scope ytd-video-meta-block complex-string'));
+        let elements = Array.from(value.getElementsByClassName('style-scope ytd-channel-name'));
 
         elements.forEach(function(e) {
-            if (maskYoutuber.includes(e.innerText)) {
+            if (maskYoutuber.indexOf(e.innerText) > -1) {
+
                 value.style.backgroundColor = 'gray';
             }
         });
